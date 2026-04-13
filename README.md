@@ -1,29 +1,38 @@
-# Epidemiological Archaeology: Mortality-Anchored Reconstruction of Epidemic Incidence
+# 🏛️ Epidemiological Archaeology of SARS-CoV-2 (and Historical 1918 Benchmark)
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+![Python](https://img.shields.io/badge/python-3.8%2B-blue.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
+![Status](https://img.shields.io/badge/status-Under_Review-orange)
 
-This repository contains the data, source code, and Jupyter notebooks to reproduce the findings of the paper: **"Mortality-anchored reconstruction of latent epidemic incidence across COVID-19 and 1918 influenza: A retrospective 'Epidemiological Archaeology' study"**.
+This repository contains the official codebase for the paper: **"Epidemiological Archaeology of SARS-CoV-2: Retrospective Inference of True Incidence via $H^3$ Topological Regularization of Excess Mortality"**.
 
-## Overview
-During systemic crises such as the COVID-19 pandemic or the 1918 influenza pandemic, institutional case counts become unreliable due to diagnostic saturation or total lack of testing. This repository implements a novel mathematical framework that back-calculates the *true* latent incidence anchored entirely on all-cause excess mortality.
+It provides a scalable mathematical framework to retrospectively reconstruct the true infection and mortality curves of epidemics. By anchoring the analysis in high-fidelity excess mortality data, the model bypasses severe unobservability biases (testing shortages, reporting delays, political opacity) present in official institutional registries.
 
-The core algorithm relies on a **Total Variation (TV) topological regularization within the $H^3$ Sobolev space**, filtering noise while preserving sudden structural breaks in transmission.
+## 🚀 Key Features
 
-## Repository Structure
-* `/src`: Contains the core Python modules:
-  * `regularization.py`: Implementation of the $H^3$ TV penalty model.
-  * `delay_kernels.py`: Infection-to-death discrete convolution operators.
-  * `ifr_dynamics.py`: Time-varying Infection Fatality Ratio (IFR) functions.
-* `/notebooks`: Step-by-step Jupyter notebooks reproducing the analyses for:
-  * SARS-CoV-2 (COVID-19) global waves.
-  * 1918 Influenza (USA, UK, and Spain).
-* `/data`: Sample datasets (or links to full datasets like the World Mortality Dataset).
+* **$H^3$ Topological Regularization:** Smooths and filters noisy all-cause excess mortality data using Sobolev spaces to extract pure epidemiological signals with $C^2$ continuity.
+* **Kinematic Time-Shift Operator:** Applies a robust clinical delay ($\tau$) from infection to death.
+* **Dynamic IFR (Infection Fatality Ratio):** Adjusts lethality dynamically over time to account for viral mutations (e.g., Wild Type to Omicron) and population immunity/vaccination.
+* **Global Scalability:** Automatically processes data for dozens of countries, calculating unobservability ratios for both infections and mortality.
+* **Historical Zero-Testing Benchmark (1918 Influenza):** Validates the mathematical engine against the 1918 "Spanish Flu" pandemic, successfully reconstructing the Spring, Autumn, and Winter waves in a 100% unobservable environment across the US, UK, Spain, and British India.
+* **Automated Visualizations:** Generates high-resolution, publication-ready 3-panel epidemiological dashboards and Error Evolution Audits (NMAE).
 
-## Installation
-To run the code, clone this repository and install the dependencies:
+## 📊 Data Sources
+This framework integrates modern and historical open datasets:
 
-```bash
-git clone [https://github.com/tu-usuario/Epidemiological-Archaeology.git](https://github.com/tu-usuario/Epidemiological-Archaeology.git)
-cd Epidemiological-Archaeology
+**SARS-CoV-2:**
+1. [World Mortality Dataset (WMD)](https://github.com/akarlinsky/world_mortality) for all-cause mortality.
+2. [JHU CSSE COVID-19 Data](https://github.com/CSSEGISandData/COVID-19) for official cases, deaths, and demographic baselines.
+
+**1918 Influenza Benchmark:**
+* Historical mortality scaling based on Taubenberger & Morens (2006), Chowell et al. (2008, 2014), and Chandra et al. (2012) for the United States, England & Wales, Spain (INE 1920), and British India.
+
+## ⚙️ Installation
+
+1. Clone the repository:
+   ```bash
+   git clone [https://github.com/TU_USUARIO/epidemiological-archaeology.git](https://github.com/TU_USUARIO/epidemiological-archaeology.git)
+   cd epidemiological-archaeology
+
+   pip install -r requirements.txt
 pip install -r requirements.txt
